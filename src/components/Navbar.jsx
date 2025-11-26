@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const Navbar = () => {
   return (
@@ -26,7 +27,7 @@ const Navbar = () => {
 
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[100] p-2 shadow bg-base-100 rounded-box w-56 text-lg"
+            className="menu menu-sm dropdown-content mt-3 z-[100px] p-2 shadow bg-base-100 rounded-box w-56 text-lg"
           >
             <li><a>Item 1</a></li>
             <li>
@@ -41,28 +42,20 @@ const Navbar = () => {
         </div>
 
         <a className="btn btn-ghost text-2xl font-extrabold tracking-wide">
-          PetCare
+          WarmPaws
         </a>
       </div>
 
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 text-lg font-medium">
-          <li><a>Item 1</a></li>
-          <li>
-            <details>
-              <summary>Parent</summary>
-              <ul className="p-2 bg-base-100 rounded-box text-base">
-                <li><a>Submenu 1</a></li>
-                <li><a>Submenu 2</a></li>
-              </ul>
-            </details>
-          </li>
-          <li><a>Item 3</a></li>
+          <li><Link to='/'>Home</Link></li>
+          <li><Link to='/services'>Services</Link></li>
+          <li><Link to='/'>My Profile</Link></li>
         </ul>
       </div>
 
       <div className="navbar-end">
-        <button className="btn btn-primary btn-md text-lg">Button</button>
+        <Link to='/login' className="btn btn-primary btn-md text-lg">Login</Link>
       </div>
     </div>
   );

@@ -1,22 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
 
-const PopularSection = () => {
-  const [services, setServices] = useState([]);
+const Services = () => {
 
-  useEffect(() => {
-    fetch("/petServices.json") 
-      .then((res) => res.json())
-      .then((data) => setServices(data))
-      .catch((err) => console.log(err));
-  }, []);
-
-  return (
-    <div className="mt-10 px-4 md:px-8 lg:px-16">
-      <h3 className="font-bold text-3xl text-center">
-        Popular Winter Care Services
-      </h3>
-
-      <div className="grid 
+    const [services, setServices] = useState([]);
+    
+      useEffect(() => {
+        fetch("/petServices.json") 
+          .then((res) => res.json())
+          .then((data) => setServices(data))
+          .catch((err) => console.log(err));
+      }, []);
+    
+    return (
+        <div>
+           <div className="grid 
                       grid-cols-1 
                       sm:grid-cols-2 
                       lg:grid-cols-3 
@@ -24,7 +21,7 @@ const PopularSection = () => {
                       mt-12 
                       justify-items-center">
 
-        {services.slice(0,6).map((service) => (
+        {services.map((service) => (
           <div
             key={service.id}
             className="card bg-base-100 w-full sm:w-80 lg:w-96 shadow-md hover:shadow-xl transition-all"
@@ -57,8 +54,8 @@ const PopularSection = () => {
         ))}
 
       </div>
-    </div>
-  );
+        </div>
+    );
 };
 
-export default PopularSection;
+export default Services;
