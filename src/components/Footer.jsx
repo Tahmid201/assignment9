@@ -5,16 +5,15 @@ const Footer = () => {
     <footer className="footer sm:footer-horizontal bg-base-200 text-base-content p-10 text-lg">
 
       <aside className="space-y-3">
+        {/* FIXED SVG — VALID PATH */}
         <svg
           width="55"
           height="55"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
-          fillRule="evenodd"
-          clipRule="evenodd"
           className="fill-current"
         >
-          <path d="M22.672 15.226l-2.432.811...."></path>
+          <path d="M12 0L15.09 7.36L23 8.51L17 13.97L18.18 22L12 18.26L5.82 22L7 13.97L1 8.51L8.91 7.36L12 0Z" />
         </svg>
 
         <p className="text-lg leading-tight">

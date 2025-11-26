@@ -1,29 +1,45 @@
-import { createBrowserRouter } from "react-router";
+import React from "react";
+import { createBrowserRouter } from "react-router-dom";
 import RootLayout from "../root/RootLayout";
 import Home from "../pages/Home";
-import Services from "../pages/Services";
 import Login from "../pages/Login";
+import Signup from "../pages/SignUp";
+import ForgotPassword from "../pages/ForgotPassword";
+import Profile from "../pages/Profile";
+import ServiceDetails from "../pages/ServiceDetails";
+import PrivateRoute from "../context/PrivateRoute";
+
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <RootLayout></RootLayout>,
-    children:[
-        {
-            path: '/',
-            element: <Home></Home>
-        },
-        {
-          path: '/services',
-          element: <Services></Services>
-        },
-        {
-          path: '/login',
-          element: <Login></Login>
+    element: <RootLayout />,
+    children: [
+      { index: true, element: <Home /> },
+      { path: "login", element: <Login /> },
+      { path: "signup", element: <Signup /> },
+      { path: "forgot-password", element: <ForgotPassword /> },
 
-        }
-    ] 
+      {
+        path: "profile",
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "service/:serviceId",
+        element: (
+          <PrivateRoute>
+            <ServiceDetails />
+          </PrivateRoute>
+        ),
+      },
+
+     
+    ],
   },
 ]);
 
