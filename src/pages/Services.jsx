@@ -1,22 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import services from "../../public/petServices.json";
+import { useNavigate } from "react-router-dom";
 
-const PopularSection = () => {
-  const [services, setServices] = useState([]);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    fetch('/petServices.json')
-      .then((res) => res.json())
-      .then(setServices)
-      .catch(console.error);
-  }, []);
+const Services = () => {
+  const navigate = useNavigate();  // get navigate function
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-10">
-      <h3 className="text-3xl font-bold text-center mb-8">Popular Winter Care Services</h3>
+    <div className="max-w-5xl mx-auto p-6">
+      <h1 className="text-3xl font-bold mb-6">All Services</h1>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {services.slice(0,6).map(s => (
+        {services.map(s => (
           <div key={s.serviceId} className="card bg-white shadow rounded overflow-hidden">
             <img className="w-full h-60 object-cover" src={s.image} alt={s.serviceName} />
             <div className="p-4">
@@ -27,14 +21,19 @@ const PopularSection = () => {
                   <p className="text-sm">Price: ${s.price}</p>
                   <p className="text-sm">Rating: {s.rating}</p>
                 </div>
-                <button className="btn btn-primary" onClick={() => navigate(`/service/${s.serviceId}`)}>View Details</button>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => navigate(`/service/${s.serviceId}`)}
+                >
+                  View Details
+                </button>
               </div>
             </div>
           </div>
         ))}
       </div>
-    </section>
+    </div>
   );
 };
 
-export default PopularSection;
+export default Services;
